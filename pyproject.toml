@@ -1,0 +1,25 @@
+[project]
+name = "intro-nn"
+dependencies = [
+    "torch>=2.1",
+    "numpy>=1.24",
+    "pandas>=2.0",
+    "matplotlib>=3.7",
+    "seaborn>=0.13",
+    "scikit-learn>=1.2",
+    "tqdm>=4.67",
+    "ipykernel",
+    "ipywidgets"
+]
+
+version = "0.1.0"
+requires-python = ">=3.8"
+authors = [
+  {name = "Isabela Fons", email = "isabela.fons@ua.es"}
+]
+description = "An introduction to neural networks using Python and Pytorch"
+readme = "README.md"
+
+
+[project.urls]
+Repository = "https://github.com/me/spam.git"
