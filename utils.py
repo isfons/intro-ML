@@ -97,7 +97,7 @@ class PeaksFunction:
         return fig, ax
 
     def plot_predictions_surface(
-        self, model, device, n_points=50, title="Model Predictions"
+        self, model, device, n_points=25, title="Model Predictions"
     ):
         """Plot model predictions as a surface"""
         # Create grid
@@ -160,39 +160,42 @@ class PeaksFunction:
         return fig
 
 
+def plot_learning_curve(history, ax=None, title=None):
+    if not ax:
+        fig, ax = plt.subplots(1, 1, figsize=(14, 5))
+
+    ax.plot(history["train_loss"], label="Train Loss", color="b")
+    ax.plot(history["val_loss"], label="Val Loss", color="r")
+    ax.set_xlim(0, len(history["train_loss"]))
+    ax.set_xlabel("Época", fontsize=12)
+    ax.set_ylabel("MSE Loss", fontsize=12)
+    if title:
+        ax.set_title(
+            title,
+            fontsize=13,
+            fontweight="bold",
+        )
+    ax.legend(fontsize=11)
+    ax.grid(True, alpha=0.3)
+
+
 def plot_learning_curve_comparison(history_small, history_large):
     # Visualizar underfitting vs overfitting
     fig, axes = plt.subplots(1, 2, figsize=(14, 5))
 
     # Modelo pequeño (underfitting)
-    axes[0].plot(
-        history_small["train_loss"], label="Train Loss", linewidth=2, color="c"
+    plot_learning_curve(
+        history_small,
+        axes[0],
+        title="Modelo Pequeño (UNDERFITTING)\nAmbas pérdidas altas y similares",
     )
-    axes[0].plot(history_small["val_loss"], label="Val Loss", linewidth=2, color="r")
-    axes[0].set_xlabel("Época", fontsize=12)
-    axes[0].set_ylabel("MSE Loss", fontsize=12)
-    axes[0].set_title(
-        "Modelo Pequeño (UNDERFITTING)\nAmbas pérdidas altas y similares",
-        fontsize=13,
-        fontweight="bold",
-    )
-    axes[0].legend(fontsize=11)
-    axes[0].grid(True, alpha=0.3)
 
     # Modelo grande (overfitting)
-    axes[1].plot(
-        history_large["train_loss"], label="Train Loss", linewidth=2, color="c"
+    plot_learning_curve(
+        history_large,
+        axes[1],
+        title="Modelo Grande (OVERFITTING)\nVal loss diverge de train loss",
     )
-    axes[1].plot(history_large["val_loss"], label="Val Loss", linewidth=2, color="r")
-    axes[1].set_xlabel("Época", fontsize=12)
-    axes[1].set_ylabel("MSE Loss", fontsize=12)
-    axes[1].set_title(
-        "Modelo Grande (OVERFITTING)\nVal loss diverge de train loss",
-        fontsize=13,
-        fontweight="bold",
-    )
-    axes[1].legend(fontsize=11)
-    axes[1].grid(True, alpha=0.3)
 
     plt.tight_layout()
     plt.show()
