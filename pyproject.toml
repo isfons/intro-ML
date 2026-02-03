@@ -9,7 +9,8 @@ dependencies = [
     "scikit-learn>=1.2",
     "tqdm>=4.67",
     "ipykernel",
-    "ipywidgets"
+    "ipywidgets",
+    "ipympl"
 ]
 
 version = "0.1.0"
