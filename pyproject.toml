@@ -10,7 +10,8 @@ dependencies = [
     "tqdm>=4.67",
     "ipykernel",
     "ipywidgets",
-    "ipympl"
+    "ipympl",
+    "optuna",
 ]
 
 version = "0.1.0"

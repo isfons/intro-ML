@@ -199,3 +199,24 @@ def plot_learning_curve_comparison(history_small, history_large):
 
     plt.tight_layout()
     plt.show()
+
+
+def plot_pred_vs_obs(model, X_obs, y_obs, ax=None, title=None, label=None):
+    if not ax:
+        fig, ax = plt.subplots(1, 1, figsize=(14, 5))
+
+    if isinstance(model, torch.nn.Module):
+        device = model.device
+        X_obs = torch.FloatTensor(X_obs).to(device)
+        y_pred = model(X_obs).detach().numpy().squeeze()
+    else:
+        y_pred = model.predict(X_obs)
+    ax.scatter(y_obs, y_pred, alpha=0.5, label=label, c="blue", s=1.0)
+    ax.set_xlabel("Observations")
+    ax.set_ylabel("Predictions")
+    if title:
+        ax.set_title(title)
+    p1 = max(max(y_obs), max(y_pred))
+    p2 = min(min(y_obs), min(y_pred))
+    ax.plot([p2, p1], [p2, p1], "--k")
+    ax.legend()
