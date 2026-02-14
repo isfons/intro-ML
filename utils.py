@@ -216,7 +216,12 @@ def plot_pred_vs_obs(model, X_obs, y_obs, ax=None, title=None, label=None):
     ax.set_ylabel("Predictions")
     if title:
         ax.set_title(title)
+    if len(y_obs.shape) > 1:
+        y_obs = y_obs.squeeze()
+    if len(y_pred.shape) > 1:
+        y_pred = y_pred.squeeze()
     p1 = max(max(y_obs), max(y_pred))
     p2 = min(min(y_obs), min(y_pred))
     ax.plot([p2, p1], [p2, p1], "--k")
     ax.legend()
+    ax.set_aspect("equal")
