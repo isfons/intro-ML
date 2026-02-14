@@ -10,10 +10,12 @@ Este repositorio contiene una serie de Jupyter Notebooks que tratan los siguient
 <a target="_blank" href="https://colab.research.google.com/github/isfons/intro-ML/blob/main/01_nn_training.ipynb">
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
+
 - **Overfitting y Underfitting**: Identificación y prevención del sobreajuste con regularización
 <a target="_blank" href="https://colab.research.google.com/github/isfons/intro-ML/blob/main/02_overfit_underfit.ipynb">
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
+
 - **Ajuste de Hiperparámetros**: Optimización automática de hiperparámetros usando Optuna
 <a target="_blank" href="https://colab.research.google.com/github/isfons/intro-ML/blob/main/03_hyperparameter_tuning.ipynb">
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
